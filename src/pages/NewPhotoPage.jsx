@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useController } from "../hooks/useHook";
+import { usePhotoStore } from "../stores/usePhotoStore";
 
 export function NewPhotoPage({ user }) {
-  const { createNewPhoto } = useController();
+  const { createNewPhoto } = usePhotoStore();
   const [formData, setFormData] = useState({
     title: "",
     date: "",

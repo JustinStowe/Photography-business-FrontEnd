@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const BASE_URL = "/api/users";
+const BASE_URL = "http://localhost:3001/users";
 
 export function signUp(userData) {
   return sendRequest(BASE_URL, "POST", userData);

@@ -1,13 +1,12 @@
 import { create } from "zustand";
 import { photoService } from "../services/photoService";
-import chalk from "chalk";
 
 export const usePhotoStore = create((set, get) => ({
   photos: [],
   getAllPhotos: async () => {
     try {
-      const data = await photoService.getAll();
-      console.log(chalk.blueBright("Get all Photos data:"), data);
+      const data = await photoService.getAllPhotos();
+      console.log("Get all Photos data:", data);
       set((state) => ({
         photos: data,
       }));

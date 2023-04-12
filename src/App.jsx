@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { authPage, HomePage, NewPhotoPage } from "./pages";
+import { AuthPage, HomePage, NewPhotoPage } from "./pages";
 import { getUser } from "./utilities/user-service";
 import { Header } from "./components";
 
 import "./App.css";
 
 function App() {
+  const [user, setUser] = useState(getUser());
   return (
     <div className="App">
       <Header user={user} />

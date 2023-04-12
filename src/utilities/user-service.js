@@ -1,4 +1,4 @@
-import * as userAPI from "./user-api";
+import * as usersAPI from "./user-api";
 
 export async function signUp(userData) {
   console.log("userData", userData);
@@ -6,14 +6,14 @@ export async function signUp(userData) {
   // Delete the network request code to the
   // users-api.js module which will ultimately
   // return the JWT
-  const token = await userAPI.signUp(userData);
+  const token = await usersAPI.signUp(userData);
   // Persist the token to localStorage
   window.localStorage.setItem("token", token);
   return getUser();
 }
 
 export async function login(credentials) {
-  const token = await userAPI.login(credentials);
+  const token = await usersAPI.login(credentials);
   // Persist the token to window.localStorage
   window.localStorage.setItem("token", token);
   return getUser();
