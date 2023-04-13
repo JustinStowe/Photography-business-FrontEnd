@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { usePhotoStore } from "../stores/usePhotoStore";
 
 export function NewPhotoPage({ user }) {
@@ -6,7 +6,7 @@ export function NewPhotoPage({ user }) {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
-    image: "",
+    file: null,
     contentType: "",
     owner: "",
   });
@@ -17,11 +17,21 @@ export function NewPhotoPage({ user }) {
       error: "",
     });
   };
+  // const handleFileChange = (evt) => {
+  //   console.log("image file for upload", evt.target.files[0]);
+  //   setFormData({ ...formData, file: evt.target.files[0] });
+  // };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
       const { error, confirm, ...data } = formData;
-      const photo = await createNewPhoto(data);
+
+      const formDataObj = new FormData();
+      formDataObj.append("title", data.title);
+      formDataObj.append("date", data.date);
+      formDataObj.append("image", data.file);
+
+      const photo = await createNewPhoto(formDataObj);
     } catch (error) {
       console.error(error);
       setFormData({ ...formData, error: "Photo creation failed!" });
@@ -45,8 +55,18 @@ export function NewPhotoPage({ user }) {
           value={formData.date}
           onChange={handleChange}
         />
-        <label>image:</label>
+        <label>
+          image:
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            value={formData.file}
+            onChange={handleChange}
+          />
+        </label>
         <h2>upload image placeholder</h2>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

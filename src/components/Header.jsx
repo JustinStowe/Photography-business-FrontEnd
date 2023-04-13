@@ -3,24 +3,21 @@ import { Link } from "react-router-dom";
 
 export function Header({ user }) {
   return (
-    <nav>
-      {user && (
-        <Link to="/home/new">
-          <button>Upload new Photo</button>
+    <div className="p-4 bg-gray-900">
+      <nav className="space-x-4 flex justify-between">
+        {user && (
+          <Link to="/home/new">
+            <button>Upload new Photo</button>
+          </Link>
+        )}
+        <Link to="/home">
+          <button>Home</button>
         </Link>
-      )}
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      {user ? (
-        <Link to="/logout">
-          <button>Logout</button>
+
+        <Link to="/account">
+          <button>Account</button>
         </Link>
-      ) : (
-        <Link to="/Login">
-          <button>Login</button>
-        </Link>
-      )}
-    </nav>
+      </nav>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthPage, HomePage, NewPhotoPage } from "./pages";
+import { AccountPage, HomePage, NewPhotoPage } from "./pages";
 import { getUser } from "./utilities/user-service";
 import { Header } from "./components";
 
@@ -15,8 +15,8 @@ function App() {
         <Route path="/home" element={<HomePage user={user} />} />
         <Route path="/home/new" element={<NewPhotoPage user={user} />} />
         <Route
-          path="/login"
-          element={<AuthPage user={user} setUser={setUser} />}
+          path="/account"
+          element={<AccountPage user={user} setUser={setUser} />}
         />
         {/* Catch-All Route */}
         <Route path="/*" element={<Navigate to="/home" />} />

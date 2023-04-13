@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SignUpForm, LoginForm } from "../components";
 
-export function AuthPage({ setUser }) {
+export function AccountPage({ user, setUser }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
