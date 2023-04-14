@@ -44,11 +44,7 @@ export function NewPhotoPage({ user }) {
 
   return (
     <div>
-      <form
-        autoComplete="off"
-        onSubmit={handleSubmit}
-        encType="multipart/form-data"
-      >
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <CloudinaryUploadWidget onImageUpload={handleImageUpload} />
         <div>
           {[...images].map((imageUrl, index) => (
