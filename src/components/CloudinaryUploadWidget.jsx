@@ -42,7 +42,7 @@ class CloudinaryUploadWidget extends Component {
       <div>
         <div></div>
 
-        <button id="upload_widget" className="cloudinary-button">
+        <button id="upload_widget" className="cloudinary-button m-2 ">
           Upload
         </button>
       </div>

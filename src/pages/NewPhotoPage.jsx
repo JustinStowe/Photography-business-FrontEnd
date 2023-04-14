@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { usePhotoStore } from "../stores/usePhotoStore";
 import CloudinaryUploadWidget from "../components/CloudinaryUploadWidget";
-import { fill } from "@cloudinary/url-gen/actions/resize";
-import { CloudinaryImage } from "@cloudinary/url-gen";
+import { useNavigate } from "react-router-dom";
 
 export function NewPhotoPage({ user }) {
   console.log("user data @ newPhoto Page:", user);
   const { createNewPhoto } = usePhotoStore();
-  const [files, setFiles] = useState([]);
+  const [images, setImages] = useState(new Set());
   const [formData, setFormData] = useState({
     title: "",
     date: "",
-    image: "",
-    owner: user._id,
+    images: "",
   });
 
-  const handleImageUpload = (imageUrl, index) => {
-    setFiles([...files.slice(0, index), imageUrl, ...files.slice(index + 1)]);
+  const handleImageUpload = (imageUrl) => {
+    setImages((prevImages) => new Set([...prevImages, imageUrl]));
   };
 
   const handleSubmit = async (evt) => {
@@ -25,31 +23,23 @@ export function NewPhotoPage({ user }) {
       const { error, confirm, ...data } = formData;
 
       console.log("data @ newPhotoPage", data);
-      await createNewPhoto({ ...data, image: files });
+      await createNewPhoto({ ...data, image: [...images] });
+      useNavigate("/home");
     } catch (error) {
       console.error(error);
       setFormData({ ...formData, error: "Photo creation failed!" });
     }
   };
+
   const handleChange = (evt) => {
     const name = evt.target.name;
     const value = evt.target.value;
 
-    if (name.startsWith("title-")) {
-      const titleIndex = name.split("-")[1];
-      setFormData((formData) => ({
-        ...formData,
-        [`title-${titleIndex}`]: value,
-        error: "",
-      }));
-    } else if (name.startsWith("date-")) {
-      const dateIndex = name.split("-")[1];
-      setFormData((formData) => ({
-        ...formData,
-        [`date-${dateIndex}`]: value,
-        error: "",
-      }));
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+      error: "",
+    }));
   };
 
   return (
@@ -61,10 +51,9 @@ export function NewPhotoPage({ user }) {
       >
         <CloudinaryUploadWidget onImageUpload={handleImageUpload} />
         <div>
-          {files.map((imageUrl, index) => (
-            <div className="flex flex-row">
+          {[...images].map((imageUrl, index) => (
+            <div className="flex flex-row" key={imageUrl}>
               <img
-                key={index}
                 src={imageUrl}
                 alt={`Uploaded image ${index}`}
                 style={{ maxHeight: 200, maxWidth: "auto" }}

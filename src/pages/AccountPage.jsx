@@ -8,18 +8,21 @@ export function AccountPage({ user, setUser }) {
   return (
     <main>
       <div>
-        {/* logo */}
-        <h3 onClick={() => setShowLogin(!showLogin)}>
-          {showLogin ? "SIGN UP" : "LOG IN"}
-        </h3>
+        {user ? (
+          <button onClick={logOut}>Log Out</button>
+        ) : (
+          <>
+            <h3 onClick={() => setShowLogin(!showLogin)}>
+              {showLogin ? "CLICK HERE TO SIGN UP" : "CLICK HERE TO LOG IN"}
+            </h3>
+            {showLogin ? (
+              <LoginForm setUser={setUser} />
+            ) : (
+              <SignUpForm setUser={setUser} />
+            )}
+          </>
+        )}
       </div>
-      {user ? (
-        <button onClick={logOut}>Log Out</button>
-      ) : showLogin ? (
-        <LoginForm setUser={setUser} />
-      ) : (
-        <SignUpForm setUser={setUser} />
-      )}
     </main>
   );
 }

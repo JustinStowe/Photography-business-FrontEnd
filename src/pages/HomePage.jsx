@@ -36,7 +36,13 @@ export function HomePage({ user }) {
           getDefaultPhotos();
         }, []);
   }
-
+  if (images < 1) {
+    return (
+      <div>
+        <h1>YOU DON'T HAVE ANY IMAGES YET.</h1>
+      </div>
+    );
+  }
   return (
     <div>
       <section>{images}</section>
