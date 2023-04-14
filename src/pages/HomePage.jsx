@@ -1,21 +1,45 @@
-import React, { useEffect, useState } from "react";
-import Photo from "../components/photo";
+import React, { useState, useEffect } from "react";
+import { CloudinaryImage } from "@cloudinary/url-gen";
+import { AdvancedImage } from "@cloudinary/react";
+import { fill } from "@cloudinary/url-gen/actions/resize";
 import { usePhotoStore } from "../stores/usePhotoStore";
+import axios from "axios";
 export function HomePage({ user }) {
   const { photos, getAllPhotos } = usePhotoStore();
-
-  useEffect(() => {
-    console.log("user data @ homepage:", user);
-    getAllPhotos(user);
-  }, []);
+  const [images, setImages] = useState([]);
+  {
+    user
+      ? useEffect(() => {
+          console.log("user data @ homepage:", user);
+          getAllPhotos(user);
+        }, [])
+      : useEffect(() => {
+          async function getDefaultPhotos() {
+            axios
+              .get(
+                "http://res.cloudinary.com/dgs9byfnn/image/list/portfolio.json"
+              )
+              .then((res) => {
+                console.log("default photos:", res.data.resources);
+                const { resources } = res.data;
+                const photoList = resources.map((resource) => {
+                  const image = new CloudinaryImage(resource.public_id, {
+                    cloudName: "dgs9byfnn",
+                  }).resize(fill().width(400).height(400));
+                  return (
+                    <AdvancedImage key={resource.public_id} cldImg={image} />
+                  );
+                });
+                setImages(photoList);
+              });
+          }
+          getDefaultPhotos();
+        }, []);
+  }
 
   return (
     <div>
-      <section>
-        {/* {photos?.map((photo) => {
-          return <Photo photo={photo} />;
-        })} */}
-      </section>
+      <section>{images}</section>
     </div>
   );
 }

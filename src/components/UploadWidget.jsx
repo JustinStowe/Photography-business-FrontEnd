@@ -1,3 +1,5 @@
+import {} from "cloudinary";
+
 function showUploadWidget() {
   cloudinary.openUploadWidget(
     {

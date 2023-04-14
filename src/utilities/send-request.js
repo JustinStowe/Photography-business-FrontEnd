@@ -1,6 +1,6 @@
 import { getToken } from "./user-service";
 
-export default async function sendRequest(url, method = "GET", payload = null) {
+export async function sendRequest(url, method = "GET", payload = null) {
   const options = { method };
   if (payload) {
     options.headers = { "Content-Type": "application/json" };
@@ -14,5 +14,24 @@ export default async function sendRequest(url, method = "GET", payload = null) {
   }
   const res = await fetch(url, options);
   if (res.ok) return res.json();
-  throw new Error("Bad Request");
+  throw new Error(`Request failed with status ${res.status}`);
+}
+
+export async function sendFileRequest(url, method = "POST", payload = null) {
+  console.log("The 'payload @ sendFile", payload);
+  const options = { method };
+  if (payload) {
+    options.headers = { "Content-Type": "multi" };
+    options.body = JSON.stringify(payload);
+  }
+  const token = getToken();
+  if (token) {
+    options.headers = options.headers || {};
+
+    options.headers.Authorization = `Bearer ${token}`;
+  }
+  options.body = payload;
+  const res = await fetch(url, options);
+  if (res.ok) return res.json();
+  throw new Error(`Request failed with status ${res.status}`);
 }
