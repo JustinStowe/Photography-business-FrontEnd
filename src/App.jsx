@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
-import { PrivateRoute } from "./components";
+
 import {
   AccountPage,
   HomePage,

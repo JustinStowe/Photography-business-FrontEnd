@@ -43,3 +43,7 @@ export function getUser() {
 export function logOut() {
   window.localStorage.removeItem("token");
 }
+
+export function changeDetails() {
+  console.log("Feature still under construction.");
+}

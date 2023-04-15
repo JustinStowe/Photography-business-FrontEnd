@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SignUpForm, LoginForm } from "../components";
+import { SignUpForm, LoginForm, AccountDetails } from "../components";
 import { useNavigate } from "react-router-dom";
 import { usePhotoStore } from "../stores/usePhotoStore";
 
@@ -21,9 +21,12 @@ export function AccountPage() {
     <main>
       <div className="m-12">
         {user ? (
-          <button className="" onClick={handleLogout}>
-            Log Out
-          </button>
+          <div>
+            <button className="" onClick={handleLogout}>
+              Log Out
+            </button>
+            <AccountDetails />
+          </div>
         ) : (
           <div className="m-8">
             {showLogin ? <LoginForm /> : <SignUpForm />}

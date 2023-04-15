@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { signUp } from "../utilities/user-service";
-
+import { usePhotoStore } from "../stores/usePhotoStore";
+import { useNavigate } from "react-router-dom";
 export function SignUpForm({ setUser }) {
+  const navigate = useNavigate();
+  const { userSignUp } = usePhotoStore();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,8 +24,8 @@ export function SignUpForm({ setUser }) {
     evt.preventDefault();
     try {
       const { error, confirm, ...data } = formData;
-      const user = await signUp(data);
-      setUser(user); // update the user in the PhotoStore with the signed-up user
+      const user = await userSignUp(data);
+      Navigate("/home/user");
     } catch (error) {
       console.log("sign-up error:", error);
       setFormData({ ...formData, error: "Sign Up Failed" });

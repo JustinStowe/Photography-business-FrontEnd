@@ -69,6 +69,21 @@ export const usePhotoStore = create((set, get) => ({
       console.error(error);
     }
   },
+  userSignUp: async (data) => {
+    try {
+      const user = await userService.signUp(data);
+      set((state) => ({
+        user: {
+          name: user.name,
+          email: user.email,
+          photos: user.photos,
+          projectId: user.projectId,
+        },
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  },
   userLogout: async () => {
     try {
       userService.logOut();
@@ -78,5 +93,18 @@ export const usePhotoStore = create((set, get) => ({
     } catch (error) {
       console.error(error);
     }
+  },
+  changeUserDetails: async () => {
+    try {
+      await userService.changeDetails();
+      set((state) => ({
+        user: {
+          name: user.name,
+          email: user.email,
+          photos: user.photos,
+          projectId: user.projectId,
+        },
+      }));
+    } catch (error) {}
   },
 }));
