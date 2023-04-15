@@ -4,34 +4,15 @@ import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { usePhotoStore } from "../stores/usePhotoStore";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export function HomePage({ user }) {
-  const { photos, getAllPhotos } = usePhotoStore();
+export function HomePage() {
+  const { photos, getAllPhotos, user } = usePhotoStore();
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  useEffect(() => {
-    async function getDefaultPhotos() {
-      try {
-        const res = await axios.get(
-          "http://res.cloudinary.com/dgs9byfnn/image/list/portfolio.json"
-        );
-        const { resources } = res.data;
-        const photoList = resources.map((resource) => {
-          const image = new CloudinaryImage(resource.public_id, {
-            cloudName: "dgs9byfnn",
-          }).resize(fill().width(400).height(400));
-          return <AdvancedImage key={resource.public_id} cldImg={image} />;
-        });
-        setImages(photoList);
-      } catch (error) {
-        console.error("Error fetching default photos:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  useEffect(() => {
     async function getUserPhotos() {
       try {
         await getAllPhotos();
@@ -40,50 +21,37 @@ export function HomePage({ user }) {
             cloudName: "dgs9byfnn",
           }).resize(fill().width(400).height(400));
           return (
-            <Link to={`/home/show/${photo._id}`} key={photo._id}>
-              <AdvancedImage cldImg={image} />
-            </Link>
+            <div className="bg-black p-2 rounded-lg" key={photo._id}>
+              <Link to={`/home/show/${photo._id}`}>
+                <AdvancedImage cldImg={image} />
+              </Link>
+              <div>Title: {photo.title}</div>
+              <div>Title: {photo.date}</div>
+            </div>
           );
         });
         setImages(photoList);
+        setIsLoading(false);
+        setIsLoaded(true);
       } catch (error) {
         console.error("Error fetching user photos:", error);
-      } finally {
         setIsLoading(false);
       }
     }
-
-    if (user) {
-      getUserPhotos();
-    } else {
-      getDefaultPhotos();
-    }
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
-
-  if (images.length < 1) {
-    return (
-      <div>
-        <h1>YOU DON'T HAVE ANY IMAGES YET.</h1>
-      </div>
-    );
-  }
+    getUserPhotos();
+  }, [getAllPhotos]);
 
   return (
     <div>
-      {user ? (
-        <h1>{user.name}'s PhotoCollection</h1>
+      <h1>Your Photo Collection</h1>
+
+      {isLoaded && user.photos < 1 ? (
+        <h1>YOU DON'T HAVE ANY PHOTOS YET</h1>
       ) : (
-        <h1>A sample of my photography portfolio</h1>
+        <section className="flex flex-wrap grid-flow-row gap-2 justify-center">
+          {images}
+        </section>
       )}
-      <section>{images}</section>
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import * as userService from "../utilities/user-service";
 import { useNavigate } from "react-router-dom";
+import { usePhotoStore } from "../stores/usePhotoStore";
 
-export function LoginForm({ setUser }) {
+export function LoginForm() {
   const navigate = useNavigate();
+  const { userLogin } = usePhotoStore();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -18,9 +19,8 @@ export function LoginForm({ setUser }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const user = await userService.login(credentials);
-      setUser(user);
-      navigate("/home");
+      const user = await userLogin(credentials);
+      navigate("/home/user");
     } catch (error) {
       console.log("login error", error);
       setError("Log in Failed, Please Try Again");
@@ -29,9 +29,14 @@ export function LoginForm({ setUser }) {
   return (
     <div>
       <div>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form
+          className="flex justify-center align-middle flex-col w-1/4 mx-auto"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <label>Email:</label>
           <input
+            className=""
             type="text"
             name="email"
             value={credentials.email}
@@ -46,7 +51,12 @@ export function LoginForm({ setUser }) {
             onChange={handleChange}
             required
           />
-          <button type="submit">LOG IN</button>
+          <button
+            className="border-green-600 bg-green-900 justify-center mx-auto m-4"
+            type="submit"
+          >
+            LOG IN
+          </button>
         </form>
       </div>
       <p>&nbsp;{error}</p>

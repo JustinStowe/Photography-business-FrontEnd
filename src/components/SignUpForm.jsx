@@ -35,7 +35,11 @@ export function SignUpForm({ setUser }) {
   return (
     <div>
       <div>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form
+          className="flex justify-center align-middle flex-col w-1/4 mx-auto"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
           <label>Name</label>
           <input
             type="text"
@@ -60,7 +64,7 @@ export function SignUpForm({ setUser }) {
             onChange={handleChange}
             required
           />
-          <label>Confirm</label>
+          <label>Confirm Password</label>
           <input
             type="password"
             name="confirm"
@@ -68,7 +72,11 @@ export function SignUpForm({ setUser }) {
             onChange={handleChange}
             required
           />
-          <button type="submit" disabled={disable}>
+          <button
+            className="border-green-600 bg-green-900 justify-center mx-auto m-4"
+            type="submit"
+            disabled={disable}
+          >
             SIGN UP
           </button>
         </form>

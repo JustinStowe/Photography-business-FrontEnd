@@ -1,37 +1,36 @@
 import React, { useState } from "react";
 import { SignUpForm, LoginForm } from "../components";
-import { logOut } from "../utilities/user-service";
 import { useNavigate } from "react-router-dom";
+import { usePhotoStore } from "../stores/usePhotoStore";
 
-export function AccountPage({ user, setUser }) {
+export function AccountPage() {
   const [showLogin, setShowLogin] = useState(true);
+  const { userLogout, user } = usePhotoStore();
   const navigate = useNavigate();
+
   const handleLogout = (evt) => {
     evt.preventDefault();
     try {
-      logOut();
-      setUser({});
-      navigate("/home");
+      userLogout();
+      navigate("/home/public");
     } catch (error) {
       console.error("logOut error:", error);
     }
   };
   return (
     <main>
-      <div>
+      <div className="m-12">
         {user ? (
-          <button onClick={handleLogout}>Log Out</button>
+          <button className="" onClick={handleLogout}>
+            Log Out
+          </button>
         ) : (
-          <>
-            <h3 onClick={() => setShowLogin(!showLogin)}>
+          <div className="m-8">
+            {showLogin ? <LoginForm /> : <SignUpForm />}
+            <button className="" onClick={() => setShowLogin(!showLogin)}>
               {showLogin ? "CLICK HERE TO SIGN UP" : "CLICK HERE TO LOG IN"}
-            </h3>
-            {showLogin ? (
-              <LoginForm setUser={setUser} />
-            ) : (
-              <SignUpForm setUser={setUser} />
-            )}
-          </>
+            </button>
+          </div>
         )}
       </div>
     </main>

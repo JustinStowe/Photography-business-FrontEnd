@@ -65,13 +65,17 @@ export function NewPhotoPage({ user }) {
   return (
     <div>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
+        <div className="flex mx-auto gap-4 justify-center m-10">
           {images.map((imageInfo, index) => (
-            <div className="flex flex-row" key={imageInfo.public_id}>
+            <div
+              className="flex flex-col items-center"
+              key={imageInfo.public_id}
+            >
               <img
                 src={imageInfo.secure_url}
                 alt={`Uploaded image ${index}`}
                 style={{ maxHeight: 200, maxWidth: "auto" }}
+                className="flex justify-center"
               />
               <label>Title:</label>
               <input
@@ -91,7 +95,12 @@ export function NewPhotoPage({ user }) {
             </div>
           ))}
         </div>
-        <button type="submit">Submit</button>
+        <button
+          className="border-green-600 bg-green-900 justify-center mx-auto m-4"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
