@@ -3,8 +3,10 @@ import { getToken } from "./user-service";
 export async function sendRequest(url, method = "GET", payload = null) {
   const options = { method };
   if (payload) {
+    console.log("payload b4 stringify @ sendRequest:", payload);
     options.headers = { "Content-Type": "application/json" };
     options.body = JSON.stringify(payload);
+    console.log("payload after stringify @ sendRequest:", options.body);
   }
   const token = getToken();
   if (token) {
@@ -13,25 +15,10 @@ export async function sendRequest(url, method = "GET", payload = null) {
     options.headers.Authorization = `Bearer ${token}`;
   }
   const res = await fetch(url, options);
-  if (res.ok) return res.json();
-  throw new Error(`Request failed with status ${res.status}`);
-}
-
-export async function sendFileRequest(url, method = "POST", payload = null) {
-  console.log("The 'payload @ sendFile", payload);
-  const options = { method };
-  if (payload) {
-    options.headers = { "Content-Type": "multi" };
-    options.body = JSON.stringify(payload);
+  if (res.ok) {
+    const json = await res.json();
+    return json;
+  } else {
+    throw new Error(`Request failed with status ${res.status}`);
   }
-  const token = getToken();
-  if (token) {
-    options.headers = options.headers || {};
-
-    options.headers.Authorization = `Bearer ${token}`;
-  }
-  options.body = payload;
-  const res = await fetch(url, options);
-  if (res.ok) return res.json();
-  throw new Error(`Request failed with status ${res.status}`);
 }

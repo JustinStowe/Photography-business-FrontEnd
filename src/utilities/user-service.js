@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import * as usersAPI from "./user-api";
 
 export async function signUp(userData) {
+  const navigate = useNavigate();
   console.log("userData", userData);
 
   // Delete the network request code to the

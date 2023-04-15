@@ -18,7 +18,7 @@ export const usePhotoStore = create((set, get) => ({
     try {
       const { getAllPhotos } = get();
 
-      await PhotoService.create(data);
+      await PhotoService.createPhoto(data);
       await getAllPhotos();
     } catch (error) {
       console.error(error);
@@ -27,7 +27,7 @@ export const usePhotoStore = create((set, get) => ({
   updatePhoto: async (id, photoData) => {
     const { getAllPhotos } = get();
     try {
-      await PhotoService.update(id, photoData);
+      await PhotoService.updatePhoto(id, photoData);
       await getAllPhotos();
     } catch (error) {
       console.error(error);

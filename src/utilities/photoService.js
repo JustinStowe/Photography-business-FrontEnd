@@ -12,7 +12,7 @@ export async function getOnePhoto(id) {
   return response;
 }
 
-export async function create(data) {
+export async function createPhoto(data) {
   console.log("data @ photoService", data);
   const response = await sendRequest(BASE_URL, "POST", data);
   return response;
@@ -23,6 +23,6 @@ export async function updatePhoto(id, data) {
 }
 
 export async function deletePhoto(id) {
-  const response = sendRequest(`${BASE_URL}/${id}`, "DELETE");
+  const response = await sendRequest(`${BASE_URL}/${id}`, "DELETE");
   return response;
 }

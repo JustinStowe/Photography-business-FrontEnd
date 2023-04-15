@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 import { SignUpForm, LoginForm } from "../components";
 import { logOut } from "../utilities/user-service";
+import { useNavigate } from "react-router-dom";
 
 export function AccountPage({ user, setUser }) {
   const [showLogin, setShowLogin] = useState(true);
-
+  const navigate = useNavigate();
+  const handleLogout = (evt) => {
+    evt.preventDefault();
+    try {
+      logOut();
+      setUser({});
+      navigate("/home");
+    } catch (error) {
+      console.error("logOut error:", error);
+    }
+  };
   return (
     <main>
       <div>
         {user ? (
-          <button onClick={logOut}>Log Out</button>
+          <button onClick={handleLogout}>Log Out</button>
         ) : (
           <>
             <h3 onClick={() => setShowLogin(!showLogin)}>
