@@ -21,7 +21,7 @@ export function NewPhotoPage({ user }) {
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
-          setImages((prevImages) => [...prevImages, result.info.secure_url]);
+          setImages((prevImages) => [...prevImages, result.info]);
           setFormData((prevData) => [...prevData, { title: "", date: "" }]);
         }
       }
@@ -46,10 +46,11 @@ export function NewPhotoPage({ user }) {
     evt.preventDefault();
 
     try {
-      const newPhotoData = images.map((imageUrl, index) => ({
+      const newPhotoData = images.map((imageInfo, index) => ({
         title: formData[index].title,
         date: formData[index].date,
-        image: imageUrl,
+        image: imageInfo.secure_url,
+        public_id: imageInfo.public_id,
       }));
 
       await createNewPhoto(newPhotoData);
@@ -65,10 +66,10 @@ export function NewPhotoPage({ user }) {
     <div>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          {images.map((imageUrl, index) => (
-            <div className="flex flex-row" key={imageUrl}>
+          {images.map((imageInfo, index) => (
+            <div className="flex flex-row" key={imageInfo.public_id}>
               <img
-                src={imageUrl}
+                src={imageInfo.secure_url}
                 alt={`Uploaded image ${index}`}
                 style={{ maxHeight: 200, maxWidth: "auto" }}
               />

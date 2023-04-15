@@ -17,8 +17,8 @@ export async function createPhoto(data) {
   const response = await sendRequest(BASE_URL, "POST", data);
   return response;
 }
-export async function updatePhoto(id, data) {
-  const response = await sendRequest(`${BASE_URL}/${id}`, "PUT", data);
+export async function updatePhoto(id) {
+  const response = await sendRequest(`${BASE_URL}/${id}`, "PUT");
   return response;
 }
 

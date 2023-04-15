@@ -5,12 +5,20 @@ export const usePhotoStore = create((set, get) => ({
   getAllPhotos: async () => {
     try {
       const data = await PhotoService.getAllPhotos();
-      console.log("Get all Photos data:", data);
+      // console.log("Get all Photos data:", data);
       set((state) => ({
         photos: data,
       }));
     } catch (error) {
       console.error("get all photos error:", error);
+    }
+  },
+  getOnePhoto: async (id) => {
+    try {
+      const data = await PhotoService.getOnePhoto(id);
+      return data;
+    } catch (error) {
+      console.error("get onePhoto error:", error);
     }
   },
   createNewPhoto: async (data) => {
@@ -24,10 +32,10 @@ export const usePhotoStore = create((set, get) => ({
       console.error(error);
     }
   },
-  updatePhoto: async (id, photoData) => {
+  updatePhoto: async (id) => {
     const { getAllPhotos } = get();
     try {
-      await PhotoService.updatePhoto(id, photoData);
+      await PhotoService.updatePhoto(id);
       await getAllPhotos();
     } catch (error) {
       console.error(error);
@@ -36,7 +44,7 @@ export const usePhotoStore = create((set, get) => ({
   deletePhoto: async (id) => {
     const { getAllPhotos } = get();
     try {
-      await PhotoService.delete(id);
+      await PhotoService.deletePhoto(id);
       await getAllPhotos();
     } catch (error) {
       console.error(error);

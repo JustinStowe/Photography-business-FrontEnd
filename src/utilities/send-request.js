@@ -3,10 +3,10 @@ import { getToken } from "./user-service";
 export async function sendRequest(url, method = "GET", payload = null) {
   const options = { method };
   if (payload) {
-    console.log("payload b4 stringify @ sendRequest:", payload);
+    // console.log("payload b4 stringify @ sendRequest:", payload);
     options.headers = { "Content-Type": "application/json" };
     options.body = JSON.stringify(payload);
-    console.log("payload after stringify @ sendRequest:", options.body);
+    // console.log("payload after stringify @ sendRequest:", options.body);
   }
   const token = getToken();
   if (token) {
