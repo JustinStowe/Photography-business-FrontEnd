@@ -19,7 +19,7 @@ export function LoginForm() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const user = await userLogin(credentials);
+      await userLogin(credentials);
       navigate("/home/user");
     } catch (error) {
       console.log("login error", error);

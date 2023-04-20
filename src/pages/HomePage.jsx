@@ -3,15 +3,14 @@ import { CloudinaryImage } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { usePhotoStore } from "../stores/usePhotoStore";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 export function HomePage() {
   const { photos, getAllPhotos, user } = usePhotoStore();
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
-
+  console.log("user data @ homepage:", user);
+  console.log("localPhotos @ homepage:", photos);
   useEffect(() => {
     async function getUserPhotos() {
       try {
@@ -32,20 +31,19 @@ export function HomePage() {
         });
         setImages(photoList);
         setIsLoading(false);
-        setIsLoaded(true);
+        console.log("useEffect ran");
       } catch (error) {
         console.error("Error fetching user photos:", error);
-        setIsLoading(false);
       }
     }
     getUserPhotos();
-  }, [getAllPhotos]);
+  }, []);
 
   return (
     <div>
       <h1>Your Photo Collection</h1>
 
-      {isLoaded && user.photos < 1 ? (
+      {user.photos < 1 ? (
         <h1>YOU DON'T HAVE ANY PHOTOS YET</h1>
       ) : (
         <section className="flex flex-wrap grid-flow-row gap-2 justify-center">

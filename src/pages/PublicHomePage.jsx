@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 
 export function PublicHomePage() {
   const [images, setImages] = useState([]);
+  const { user } = usePhotoStore();
   const [isLoading, setIsLoading] = useState(true);
+  const userCheck = user ? true : false;
+  console.log("user logged in @ public home page:", userCheck);
   useEffect(() => {
     async function getDefaultPhotos() {
       try {

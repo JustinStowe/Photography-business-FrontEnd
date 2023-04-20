@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { usePhotoStore } from "../stores/usePhotoStore";
 import { useNavigate } from "react-router-dom";
 
-export function NewPhotoPage({ user }) {
+export function NewPhotoPage() {
   // console.log("user data @ newPhoto Page:", user);
-  const { createNewPhoto } = usePhotoStore();
+  const { createNewPhoto, user } = usePhotoStore();
   const [images, setImages] = useState([]);
   const [formData, setFormData] = useState([]);
   const navigate = useNavigate();

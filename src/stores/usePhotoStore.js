@@ -4,7 +4,7 @@ import * as userService from "../utilities/user-service";
 
 export const usePhotoStore = create((set, get) => ({
   photos: [],
-  user: {},
+  user: userService.getUser(),
   getAllPhotos: async () => {
     try {
       const data = await PhotoService.getAllPhotos();
@@ -56,6 +56,7 @@ export const usePhotoStore = create((set, get) => ({
   },
   userLogin: async (credentials) => {
     try {
+      const { getAllPhotos } = get();
       const user = await userService.login(credentials);
       set((state) => ({
         user: {
@@ -63,14 +64,17 @@ export const usePhotoStore = create((set, get) => ({
           email: user.email,
           photos: user.photos,
           projectId: user.projectId,
+          token: userService.getUser(),
         },
       }));
+      await getAllPhotos();
     } catch (error) {
       console.error(error);
     }
   },
   userSignUp: async (data) => {
     try {
+      const { getAllPhotos } = get();
       const user = await userService.signUp(data);
       set((state) => ({
         user: {
@@ -78,8 +82,10 @@ export const usePhotoStore = create((set, get) => ({
           email: user.email,
           photos: user.photos,
           projectId: user.projectId,
+          token: userService.getUser(),
         },
       }));
+      await getAllPhotos();
     } catch (error) {
       console.error(error);
     }

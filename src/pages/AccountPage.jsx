@@ -7,7 +7,7 @@ export function AccountPage() {
   const [showLogin, setShowLogin] = useState(true);
   const { userLogout, user } = usePhotoStore();
   const navigate = useNavigate();
-
+  console.log("user data @ account page:", user);
   const handleLogout = (evt) => {
     evt.preventDefault();
     try {
@@ -25,6 +25,7 @@ export function AccountPage() {
             <button className="" onClick={handleLogout}>
               Log Out
             </button>
+            <h1 className="m-4">Edit account details</h1>
             <AccountDetails />
           </div>
         ) : (

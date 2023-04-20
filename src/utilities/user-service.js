@@ -44,6 +44,6 @@ export function logOut() {
   window.localStorage.removeItem("token");
 }
 
-export function changeDetails() {
+export async function changeDetails() {
   console.log("Feature still under construction.");
 }

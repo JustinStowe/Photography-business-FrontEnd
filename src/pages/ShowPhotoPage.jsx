@@ -5,7 +5,7 @@ import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 
-export function ShowPhotoPage({ user }) {
+export function ShowPhotoPage() {
   const { id } = useParams();
   const { updatePhoto, getOnePhoto, deletePhoto } = usePhotoStore();
   const [image, setImage] = useState();
@@ -17,7 +17,7 @@ export function ShowPhotoPage({ user }) {
     // fetch photo data by id and set initial form values
     const fetchPhoto = async () => {
       const photoData = await getOnePhoto(id);
-      console.log("photoDate @ showPage:", photoData);
+      console.log("photoData @ showPage:", photoData);
       const foundImage = new CloudinaryImage(photoData.public_id, {
         cloudName: "dgs9byfnn",
       }).resize(fill().width(450).height(450));
@@ -43,7 +43,7 @@ export function ShowPhotoPage({ user }) {
     evt.preventDefault();
     try {
       await deletePhoto(id);
-      navigate("/home");
+      navigate("/home/user");
     } catch (error) {}
   };
   const handleSubmit = async (evt) => {
@@ -62,12 +62,17 @@ export function ShowPhotoPage({ user }) {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center flex-col">
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <AdvancedImage cldImg={image} alt={`Uploaded image`} />
+          <AdvancedImage
+            className="mx-auto my-7"
+            cldImg={image}
+            alt={`Uploaded image`}
+          />
           <label>Title:</label>
           <input
+            className="my-4  mx-2"
             type="text"
             name="title"
             value={formData.title}
@@ -76,6 +81,7 @@ export function ShowPhotoPage({ user }) {
           />
           <label>Date:</label>
           <input
+            className="my-4 mx-2"
             type="text"
             name="date"
             value={formData.date}

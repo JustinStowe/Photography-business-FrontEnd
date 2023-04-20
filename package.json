@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "react": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },

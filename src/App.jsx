@@ -9,12 +9,9 @@ import {
 } from "./pages";
 
 import { Header } from "./components";
-import { usePhotoStore } from "./stores/usePhotoStore";
 import "./App.css";
 
 function App() {
-  const { user, setUser } = usePhotoStore;
-
   return (
     <div className="App">
       <Header />
@@ -23,9 +20,9 @@ function App() {
         <Route path="/home/user" element={<HomePage />} />
         <Route path="/home/user/new" element={<NewPhotoPage />} />
         <Route path="/home/show/:id" element={<ShowPhotoPage />} />
-        <Route path="/account" element={<AccountPage user={user} />} />
+        <Route path="/account" element={<AccountPage />} />
         {/* Catch-All Route */}
-        {/* <Route path="/*" element={<Navigate to="/home/public" />} /> */}
+        <Route path="/*" element={<Navigate to="/home/public" />} />
       </Routes>
     </div>
   );
