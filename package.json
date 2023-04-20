@@ -2,6 +2,7 @@
   "name": "photography-business-frontend",
   "private": false,
   "version": "1.0.0",
+  "license": "SEE LICENSE IN <LICENSE>",
   "type": "module",
   "scripts": {
     "react": "vite",
