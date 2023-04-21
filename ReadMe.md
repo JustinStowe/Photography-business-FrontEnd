@@ -244,16 +244,16 @@ Project Link: [https://github.com/JustinStowe/Photography-business-Portal-FrontE
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/JustinStowe/Photography-business-Portal-FrontEnd.svg?style=for-the-badge
-[contributors-url]: https://github.com/JustinStowe/Photography-business-Portal-FrontEnd/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/JustinStowe/Photography-business-Portal-FrontEnd.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
+[contributors-url]: https://github.com/JustinStowe/Photography-business-FrontEnd/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
 [forks-url]: https://github.com/JustinStowe/Photography-business-Portal-FrontEnd/network/members
-[stars-shield]: https://img.shields.io/github/stars/JustinStowe/Photography-business-Portal-FrontEnd.svg?style=for-the-badge
-[stars-url]: https://github.com/JustinStowe/Photography-business-Portal-FrontEnd/stargazers
-[issues-shield]: https://img.shields.io/github/issues/JustinStowe/Photography-business-Portal-FrontEnd.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
+[stars-url]: https://github.com/JustinStowe/Photography-business-FrontEnd/stargazers
+[issues-shield]: https://img.shields.io/github/issues/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
 [issues-url]: https://github.com/JustinStowe/Photography-business-Portal-FrontEnd/issues
-[license-shield]: https://img.shields.io/github/license/JustinStowe/Photography-business-Portal-FrontEnd.svg?style=for-the-badge
-[license-url]: https://github.com/JustinStowe/Photography-business-Portal-FrontEnd/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
+[license-url]: https://github.com/JustinStowe/Photography-business-FrontEnd/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/JustinStowe
 [product-screenshot]: https://user-images.githubusercontent.com/110639329/233724399-fdd267cf-b90e-4cf4-9069-3a5817644e83.png
