@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "react": "vite",
-    "start": "vite",
+    "start": "vite --port $PORT",
     "build": "vite build",
     "preview": "vite preview"
   },
