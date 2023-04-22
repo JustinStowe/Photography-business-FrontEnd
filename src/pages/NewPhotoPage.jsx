@@ -55,7 +55,7 @@ export function NewPhotoPage() {
 
       await createNewPhoto(newPhotoData);
       console.log("array of photos data @ newPhotoPage:", newPhotoData);
-      navigate("/home");
+      navigate("/home/user");
     } catch (error) {
       console.error(error);
       setFormData({ ...formData, error: "Photo creation failed!" });
