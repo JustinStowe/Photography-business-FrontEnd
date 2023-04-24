@@ -1,5 +1,5 @@
 import { sendRequest } from "./send-request";
-const BASE_URL = "http://localhost:3001/photos";
+const BASE_URL = "https://sea-lion-app-pi8jx.ondigitalocean.app/photos";
 export async function getAllPhotos() {
   const response = await sendRequest(BASE_URL, "GET");
 

@@ -4,7 +4,6 @@ import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { usePhotoStore } from "../stores/usePhotoStore";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export function PublicHomePage() {
   const [images, setImages] = useState([]);
@@ -16,7 +15,7 @@ export function PublicHomePage() {
     async function getDefaultPhotos() {
       try {
         const res = await axios.get(
-          "http://res.cloudinary.com/dgs9byfnn/image/list/portfolio.json"
+          "https://res.cloudinary.com/dgs9byfnn/image/list/portfolio.json"
         );
         const { resources } = res.data;
         const photoList = resources.map((resource) => {

@@ -1,6 +1,6 @@
 import { sendRequest } from "./send-request";
 
-const BASE_URL = "/users";
+const BASE_URL = "https://sea-lion-app-pi8jx.ondigitalocean.app/users";
 
 export function signUp(userData) {
   return sendRequest(BASE_URL, "POST", userData);
