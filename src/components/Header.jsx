@@ -25,6 +25,9 @@ export function Header() {
         <Link to="/account">
           <button>Account</button>
         </Link>
+        <Link to="https://calendly.com/justinstowe12/consultation-meeting">
+          <button>schedule a meeting</button>
+        </Link>
       </nav>
     </div>
   );
