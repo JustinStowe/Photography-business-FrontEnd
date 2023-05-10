@@ -174,7 +174,8 @@ This is an example of how to list things you need to use the software and how to
 
 
 
-<!-- ROADMAP -->![photography business page wire frame](https://github.com/JustinStowe/Photography-business-FrontEnd/assets/110639329/c770a8ea-7c89-49cc-b8a9-a48116129b18)
+![image](https://github.com/JustinStowe/Photography-business-FrontEnd/assets/110639329/3d1fa418-ef81-4ea5-8482-8ad2209742f0)
+
 
 
 ## Roadmap
