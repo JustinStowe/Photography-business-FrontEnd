@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import emailjs from "emailjs/browser";
-export function contact() {
+import emailjs from "@emailjs/browser";
+export function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

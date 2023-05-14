@@ -6,6 +6,7 @@ import {
   NewPhotoPage,
   ShowPhotoPage,
   PublicHomePage,
+  ContactPage,
 } from "./pages";
 
 import { Header } from "./components";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home/user/new" element={<NewPhotoPage />} />
         <Route path="/home/show/:id" element={<ShowPhotoPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         {/* Catch-All Route */}
         <Route path="/*" element={<Navigate to="/home/public" />} />
       </Routes>
