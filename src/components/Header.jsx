@@ -5,36 +5,50 @@ import { usePhotoStore } from "../stores/usePhotoStore";
 export function Header() {
   const { user } = usePhotoStore();
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="p-4  bg-black w-full ">
-      <nav className="space-x-4 flex justify-around">
+    <div className="p-4 bg-black w-full">
+      <div className="flex justify-end">
+        <button className="text-white md:hidden" onClick={toggleMenu}>
+          Menu
+        </button>
+      </div>
+      <nav
+        className={`space-x-4 md:flex md:justify-end ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
         {user && (
           <Link to="/home/user/new">
-            <button>Upload new Photo</button>
+            <button onClick={toggleMenu}>Upload new Photo</button>
           </Link>
         )}
         {user ? (
           <Link to="/home/user">
-            <button>Home</button>
+            <button onClick={toggleMenu}>Home</button>
           </Link>
         ) : (
           <Link to="/home/public">
-            <button>Home</button>
+            <button onClick={toggleMenu}>Home</button>
           </Link>
         )}
 
         <Link to="/account">
-          <button>Account</button>
+          <button onClick={toggleMenu}>Account</button>
         </Link>
 
         <Link
           to="https://calendly.com/justinstowe12/consultation-meeting"
           target="blank"
         >
-          <button>schedule a meeting</button>
+          <button onClick={toggleMenu}>Schedule a meeting</button>
         </Link>
         <Link to="/contact">
-          <button>Contact Me</button>
+          <button onClick={toggleMenu}>Contact Me</button>
         </Link>
       </nav>
     </div>
