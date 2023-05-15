@@ -6,6 +6,7 @@ export function Header() {
   const { user } = usePhotoStore();
   const [isOpen, setIsOpen] = useState(false);
 
+  // toggle the dropdown menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -17,11 +18,7 @@ export function Header() {
           Menu
         </button>
       </div>
-      <nav
-        className={`space-x-4 md:flex md:justify-end ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
+      <nav className="space-x-4 flex flex-col md:flex-row md:justify-end">
         {user && (
           <Link to="/home/user/new">
             <button onClick={toggleMenu}>Upload new Photo</button>
@@ -43,7 +40,7 @@ export function Header() {
 
         <Link
           to="https://calendly.com/justinstowe12/consultation-meeting"
-          target="blank"
+          target="_blank"
         >
           <button onClick={toggleMenu}>Schedule a meeting</button>
         </Link>

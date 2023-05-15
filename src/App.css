@@ -4,3 +4,18 @@
   padding: 2rem;
   text-align: center;
 }
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+  }
+  nav a {
+    margin-right: 1rem;
+  }
+}
