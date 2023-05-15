@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+
 export function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -7,7 +8,7 @@ export function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEmail(name, email, message);
+    sendEmail(name, email, message);
   };
 
   const sendEmail = (name, email, message) => {
@@ -34,29 +35,46 @@ export function ContactPage() {
         }
       );
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="message">Message</label>
-      <textarea
-        id="message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      ></textarea>
-      <button type="submit">Send</button>
-    </form>
+    <div className="flex items-center justify-center h-screen">
+      <form className="w-full max-w-md" onSubmit={handleSubmit}>
+        <label htmlFor="name" className="block mb-2">
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full mb-4 p-2 border rounded"
+        />
+        <label htmlFor="email" className="block mb-2">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full mb-4 p-2 border rounded"
+        />
+        <label htmlFor="message" className="block mb-2">
+          Message
+        </label>
+        <textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full mb-4 p-2 border rounded"
+        ></textarea>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Send
+        </button>
+      </form>
+    </div>
   );
 }
