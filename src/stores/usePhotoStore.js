@@ -65,6 +65,7 @@ export const usePhotoStore = create((set, get) => ({
           photos: user.photos,
           projectId: user.projectId,
           token: userService.getUser(),
+          isAdmin: user.isAdmin,
         },
       }));
       await getAllPhotos();
