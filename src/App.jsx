@@ -7,6 +7,7 @@ import {
   ShowPhotoPage,
   PublicHomePage,
   ContactPage,
+  AdminPage,
 } from "./pages";
 
 import { Header } from "./components";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/home/show/:id" element={<ShowPhotoPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/home/admin" element={<AdminPage />} />
         {/* Catch-All Route */}
         <Route path="/*" element={<Navigate to="/home/public" />} />
       </Routes>
