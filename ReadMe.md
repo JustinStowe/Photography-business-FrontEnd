@@ -172,11 +172,7 @@ This is an example of how to list things you need to use the software and how to
 
 ![image](https://user-images.githubusercontent.com/110639329/216745056-d844f6cd-32a3-4d9f-bbb1-f4010551faf6.png)
 
-
-
 ![image](https://github.com/JustinStowe/Photography-business-FrontEnd/assets/110639329/3d1fa418-ef81-4ea5-8482-8ad2209742f0)
-
-
 
 ## Roadmap
 
@@ -185,8 +181,8 @@ This is an example of how to list things you need to use the software and how to
 - [x] authentication and account management
 - [x] authentication of unique users
 - [x] Ability to change account details
-- [ ] Email integration
-- [ ] Calendly integration
+- [x] Email integration
+- [x] Calendly integration
 - [ ] Full admin account setup
 - [ ] Interactive client list
 - [ ] Interactive project ID list
