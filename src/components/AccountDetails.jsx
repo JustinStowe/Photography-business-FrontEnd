@@ -24,11 +24,11 @@ export function AccountDetails() {
     evt.preventDefault();
     try {
       const { error, confirm, ...data } = formData;
-      const user = await changeUserDetails(data);
-      Navigate("/account");
+      await changeUserDetails(formData);
+      navigate("/user/home");
     } catch (error) {
       console.log("sign-up error:", error);
-      setFormData({ ...formData, error: "Sign Up Failed" });
+      setFormData({ ...formData, error: "edit account details failed" });
     }
   };
 

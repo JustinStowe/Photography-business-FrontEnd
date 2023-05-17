@@ -43,6 +43,9 @@ export function logOut() {
   window.localStorage.removeItem("token");
 }
 
-export async function changeDetails() {
+export async function changeDetails(userData) {
   console.log("Feature still under construction.");
+  const token = await usersAPI.changeUserDetails(userData);
+  window.localStorage.setItem("token", token);
+  return token;
 }
