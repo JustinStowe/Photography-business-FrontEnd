@@ -98,7 +98,7 @@
 
 ## Getting Started
 
-Link to webpage: <https://myphotographypage.herokuapp.com>
+Link to webpage: <https://photography-business.netlify.app/home/public>
 
 ## The end goal
 
