@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/JustinStowe/Photography-business-Portal-FrontEnd">
-    <img src="https://user-images.githubusercontent.com/110639329/233704909-170868e2-f051-42e6-b733-8a77e037d9b9.jpg" alt="Logo" width="80" height="80>
+    <img src="https://user-images.githubusercontent.com/110639329/233704909-170868e2-f051-42e6-b733-8a77e037d9b9.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Photography-business-Portal</h3>
@@ -253,7 +253,7 @@ Project Link: [https://github.com/JustinStowe/Photography-business-Portal-FrontE
 [license-shield]: https://img.shields.io/github/license/JustinStowe/Photography-business-FrontEnd.svg?style=for-the-badge
 [license-url]: https://github.com/JustinStowe/Photography-business-FrontEnd/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]:https://www.linkedin.com/in/justin-stowe/
+[linkedin-url]: https://www.linkedin.com/in/justin-stowe/
 [product-screenshot]: https://user-images.githubusercontent.com/110639329/233724399-fdd267cf-b90e-4cf4-9069-3a5817644e83.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
