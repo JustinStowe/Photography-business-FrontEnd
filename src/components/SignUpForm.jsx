@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { usePhotoStore } from "../stores/usePhotoStore";
 import { useNavigate } from "react-router-dom";
+import { usePhotoStore } from "../stores/usePhotoStore";
+
 export function SignUpForm({ setUser }) {
   const navigate = useNavigate();
   const { userSignUp } = usePhotoStore();
@@ -25,7 +26,7 @@ export function SignUpForm({ setUser }) {
     try {
       const { error, confirm, ...data } = formData;
       const user = await userSignUp(data);
-      Navigate("/home/user");
+      navigate("/home/user");
     } catch (error) {
       console.log("sign-up error:", error);
       setFormData({ ...formData, error: "Sign Up Failed" });
@@ -42,32 +43,36 @@ export function SignUpForm({ setUser }) {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
-          <label>Name</label>
+          <label>Name:</label>
           <input
+            className="border-black border-2 rounded-md"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             required
           />
-          <label>Email</label>
+          <label>Email:</label>
           <input
+            className="border-black border-2 rounded-md"
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
-          <label>Password</label>
+          <label>Password:</label>
           <input
+            className="border-black border-2 rounded-md"
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
-          <label>Confirm Password</label>
+          <label>Confirm Password:</label>
           <input
+            className="border-black border-2 rounded-md"
             type="password"
             name="confirm"
             value={formData.confirm}

@@ -36,15 +36,16 @@ export function LoginForm() {
         >
           <label>Email:</label>
           <input
-            className=""
+            className="border-black border-2 rounded-md"
             type="text"
             name="email"
             value={credentials.email}
             onChange={handleChange}
             required
           />
-          <label>Password</label>
+          <label>Password:</label>
           <input
+            className="border-black border-2 rounded-md"
             type="password" // Change input type to "password"
             name="password"
             value={credentials.password}

@@ -47,7 +47,7 @@ export function PublicHomePage() {
   }
   return (
     <div>
-      <h1 className="m-8 border-gray-800 border-solid bg-black p-2 w-1/2 mx-auto rounded-xl">
+      <h1 className="m-8 border-gray-800 border-solid bg-black p-2 w-1/2 mx-auto rounded-xl text-green-300">
         A sample of my photography portfolio
       </h1>
       <section className="flex flex-wrap grid-flow-row gap-2 justify-center">

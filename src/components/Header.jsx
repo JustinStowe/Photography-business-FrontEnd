@@ -12,13 +12,16 @@ export function Header() {
   };
 
   return (
-    <div className="p-4 bg-black w-full">
-      <div className="flex justify-end">
+    <div className="p-2 bg-black w-full">
+      <div className="flex justify-start align-middle font-mono text-4xl text-green-300 ">
+        Justin's Photography
+      </div>
+      {/* <div className="flex justify-end">
         <button className="text-white md:hidden" onClick={toggleMenu}>
           Menu
         </button>
-      </div>
-      <nav className="space-x-4 flex flex-col md:flex-row md:justify-end">
+      </div> */}
+      <nav className="space-x-4 flex flex-row md:flex-row md:justify-end">
         {user && (
           <Link to="/home/user/new">
             <button onClick={toggleMenu}>Upload new Photo</button>
